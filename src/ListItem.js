@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { memo, useState } from "react";
-import { removeToDB, editDB, deleteAll } from "./PouchDb";
+import { removeToDB, editDB } from "./PouchDb";
 
-const TaskItem = ({ task, taskId, getToDBFun }) => {
+const ListItem = ({ task, taskId, getToDBFun }) => {
   const [inputdata, setInputdata] = useState("");
   const removeTodo = async () => {
     await removeToDB(taskId);
@@ -14,27 +14,22 @@ const TaskItem = ({ task, taskId, getToDBFun }) => {
     await getToDBFun();
   };
 
-  const deleteAllTask = async () => {
-    await deleteAll(taskId);
-  };
-
+  
   return (
-    <div>
-      <button type="button" onClick={deleteAllTask}>
-        ALLDELETE
+    <div className="space-y-1">
+            <br />
+      <li className="p-2 text-xl  ">{task}</li>
+      <button type="button" onClick={removeTodo}  className="bg-red-200 p-1">
+        Delete
       </button>
       <br />
-      <li>{task}</li>
-      <button type="button" onClick={removeTodo}>
-        X
-      </button>
-      <br />
-      <button type="button" onClick={editTodo}>
+      <button type="button" className="pr-5" onClick={editTodo}>
         Edit
       </button>
       <input
         type="text"
-        placeholder="EDIT DATA"
+        placeholder="Edit TODO"
+        className="border"
         value={inputdata}
         onChange={(e) => {
           setInputdata(e.target.value);
@@ -44,4 +39,4 @@ const TaskItem = ({ task, taskId, getToDBFun }) => {
   );
 };
 
-export default memo(TaskItem);
+export default memo(ListItem);

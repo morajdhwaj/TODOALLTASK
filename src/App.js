@@ -1,13 +1,12 @@
 import React from "react";
-import Getlist from "./Getlist";
-import InputBox from "./InputBox";
+import Insert from "./Insert";
+import List from "./List";
 
 const App = () => {
   return (
-    <div>
-      <h1>TASK LIST</h1>
-      <InputBox />
-      <Getlist />
+    <div className="  flex flex-col items-center space-y-5 pt-20">
+      <Insert />
+      <List />
     </div>
   );
 };

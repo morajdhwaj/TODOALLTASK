@@ -2,9 +2,9 @@
 import React, { createContext, useEffect, useState } from "react";
 import { getToDB } from "./PouchDb";
 
-export const ContextBoxSpace = createContext();
+export const ContextVAR = createContext();
 
-export const ContextBox = ({ children }) => {
+export const Context = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
 
   const getToDBFun = async () => {
@@ -25,8 +25,8 @@ export const ContextBox = ({ children }) => {
   }, []);
 
   return (
-    <ContextBoxSpace.Provider value={value}>
+    <ContextVAR.Provider value={value}>
       {children}
-    </ContextBoxSpace.Provider>
+    </ContextVAR.Provider>
   );
 };
