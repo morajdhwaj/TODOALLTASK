@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useEffect, useState } from "react";
-import { getToDB } from "./PouchDb";
+import { getDB } from "./PouchDb";
 
 export const ContextVAR = createContext();
 
@@ -8,7 +8,7 @@ export const Context = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
 
   const getToDBFun = async () => {
-    const data = await getToDB();
+    const data = await getDB();
     console.log("dataComingdb", data);
     setTaskList(data?.rows);
   };

@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
 import {  ContextVAR } from "./Context";
-import { insertToDB } from "./PouchDb";
+import { insertDB, } from "./PouchDb";
 
 const Insert = () => {
-  const [inputdata, setInputdata] = useState("");
+  const [insertItem, setinsertItem] = useState("");
   const [counter, setCounter] = useState(1);
 
   const data = useContext(ContextVAR);
   const itemEvent = (e) => {
-    setInputdata(e.target.value);
+    setinsertItem(e.target.value);
   };
 
  
@@ -16,15 +16,15 @@ const Insert = () => {
     setCounter(counter + 1);
     e.preventDefault();
     const newTodo = {
-      task: inputdata,
+      task: insertItem,
       isDone: false,
     };
     for (let i = 1; i <= counter; i++) {
-      await insertToDB(newTodo);
+      await insertDB(newTodo);
     }
     // eslint-disable-next-line no-unused-vars
     const ret = await data?.getToDBFun();
-    setInputdata("");
+    setinsertItem("");
   };
 
   return (
@@ -35,7 +35,7 @@ const Insert = () => {
           <input
             type="text"
             placeholder="Add Todo"
-            value={inputdata}
+            value={insertItem}
             onChange={itemEvent}
             className="border"
           />

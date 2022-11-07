@@ -6,7 +6,7 @@ db.info().then((info) => {
   console.log(info);
 });
 
-export async function insertToDB(data) {
+export async function insertDB(data) {
   try {
     const getresponse = await db.post(data);
     return getresponse;
@@ -16,7 +16,7 @@ export async function insertToDB(data) {
   return null;
 }
 
-export function getToDB() {
+export function getDB() {
   const val = db
     .allDocs({ include_docs: true, descending: true }, (err, doc) => doc.rows)
     .catch((err) => {
@@ -25,7 +25,7 @@ export function getToDB() {
   return val;
 }
 
-export async function removeToDB(id) {
+export async function removeDB(id) {
   try {
     const doc = await db.get(id);
     db.remove(doc);

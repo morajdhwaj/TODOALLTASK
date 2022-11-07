@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { memo, useState } from "react";
-import { removeToDB, editDB } from "./PouchDb";
+import {  editDB, removeDB } from "./PouchDb";
 
 const ListItem = ({ task, taskId, getToDBFun }) => {
   const [inputdata, setInputdata] = useState("");
   const removeTodo = async () => {
-    await removeToDB(taskId);
+    await removeDB(taskId);
     await getToDBFun();
   };
 

@@ -13,7 +13,7 @@ const List = (taskId) => {
   return (
     <div >
       <button className="text-center bg-slate-300 p-2" type="button" onClick={deleteAllTask}>
-        Delete delete
+        Delete All
       </button>
 
       <ol>
